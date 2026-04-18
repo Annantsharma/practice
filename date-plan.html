@@ -117,23 +117,35 @@
             </div>
         </div>
     </div>
-    <script>
-    const noBtn = document.getElementById("noBtn");
-	const yesBtn = document.getElementById("yesBtn");
+   <script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
 
-	function moveButton() {
-		const moveRange = 50;
-		const x = (Math.random() - 100) * moveRange;
-		const y = (Math.random() - 100) * moveRange;
-		noBtn.style.transform = `translate(${x}px,${y}px)`
-	}
-	noBtn.addEventListener("mouseover", moveButton);
-	noBtn.addEventListener("touchstart", moveButton);
-	noBtn.addEventListener("click", moveButton);
-	yesBtn.addEventListener("click", () => {
-		let modal = new bootstrap.Modal(document.getElementById("loveModal"));
-		modal.show()
-	}); </script>
+function moveButton() {
+    const moveRange = 60; // control movement
+
+    // Correct random range (-30 to +30 approx)
+    const x = (Math.random() - 0.5) * moveRange;
+    const y = (Math.random() - 0.5) * moveRange;
+
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+// Desktop
+noBtn.addEventListener("mouseover", moveButton);
+
+// Mobile
+noBtn.addEventListener("touchstart", moveButton);
+
+// Click fallback
+noBtn.addEventListener("click", moveButton);
+
+// YES button
+yesBtn.addEventListener("click", () => {
+    let modal = new bootstrap.Modal(document.getElementById("loveModal"));
+    modal.show();
+});
+</script>
 </body>
 
 </html>
